@@ -13,7 +13,7 @@ import (
 	"github.com/hashicorp/packer/helper/multistep"
 	"github.com/hashicorp/packer/packer"
 
-	cfg "github.com/mkaczanowski/packer-builder-arm/config"
+	cfg "github.com/bcomnes/packer-builder-arm/config"
 )
 
 func sortMountpoints(chrootMounts []cfg.ChrootMount, reverse bool) []cfg.ChrootMount {

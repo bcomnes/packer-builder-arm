@@ -9,7 +9,7 @@ import (
 	"github.com/hashicorp/packer/packer"
 	"github.com/mholt/archiver"
 
-	cfg "github.com/mkaczanowski/packer-builder-arm/config"
+	cfg "github.com/bcomnes/packer-builder-arm/config"
 )
 
 // StepPopulateFilesystem unpacks system files from previously downloaded archive onto mounted partitions
