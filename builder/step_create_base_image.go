@@ -20,7 +20,7 @@ func (s *StepCreateBaseImage) Run(ctx context.Context, state multistep.StateBag)
 	ui := state.Get("ui").(packer.Ui)
 
 	bs := 4096
-	cnt := int(config.ImageConfig.ImageSizeBytes) / bs
+	seek := int(config.ImageConfig.ImageSizeBytes) / bs
 
 	ui.Message(fmt.Sprintf("creating an empty image %s", config.ImageConfig.ImagePath))
 	out, err := exec.Command(
@@ -28,7 +28,8 @@ func (s *StepCreateBaseImage) Run(ctx context.Context, state multistep.StateBag)
 		"if=/dev/zero",
 		fmt.Sprintf("of=%s", config.ImageConfig.ImagePath),
 		fmt.Sprintf("bs=%d", bs),
-		fmt.Sprintf("count=%d", cnt),
+		fmt.Sprintf("count=%d", 0),
+		fmt.Sprintf("seek=%d", seek),
 	).CombinedOutput()
 
 	ui.Say(fmt.Sprintf("dd output: %s", string(out)))
